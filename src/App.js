@@ -5,6 +5,7 @@ import AddNote from "./components/AddNote";
 import { useState, useEffect } from "react";
 import SearchBar from "./components/SearchBar";
 import NoteDetails from "./components/NoteDetails";
+import { nanoid } from 'nanoid';
 
 function App() {
   const [activeNote, setActive] = useState(false);
@@ -40,7 +41,7 @@ function App() {
     console.log(title, title);
     if (title.trim().length > 0) {
       const note = {
-        id: Math.random(),
+        id: nanoid(),
         text: text,
         title: title,
       };
@@ -86,7 +87,7 @@ function App() {
         className="addButton"
         style={{ position: "fixed" }}
       >
-        +
+        Add
       </button>
       {show && <AddNote handle={handleAdd} />}
       {/* <AddNote handle={handleAdd} /> */}
