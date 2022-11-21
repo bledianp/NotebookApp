@@ -3,37 +3,49 @@ import Note from "./components/Note";
 import List from "./components/List";
 import AddNote from "./components/AddNote";
 import { useState } from "react";
+import SearchBar from "./components/SearchBar";
+import NoteDetails from "./components/NoteDetails";
 
 function App() {
+  const [activeNote, setActive] = useState("");
+  console.log(activeNote);
+  const [searchTxt, setText] = useState('');
+  const [show, setShow] = useState(false);
   const [notes, setNotes] = useState([
-    {
-      id: 1,
-      title: "Note 1",
-      text: "This is a text.",
-    },
-    {
-      id: 2,
-      title: "Note 2",
-      text: "This is another text.",
-    },
-    {
-      id: 3,
-      title: "Note 3",
-      text: "This is text text...",
-    },
-    {
-      id: 4,
-      title: "Note 4",
-      text: "Mire se Shkut",
-    },
-    {
-      id: 5,
-      title: "Shqiperia",
-      text: "Mire se Shkut",
-    },
+    // {
+    //   id: 1,
+    //   title: "Note 1",
+    //   text: "This is a text.",
+    // },
+    // {
+    //   id: 2,
+    //   title: "Note 2",
+    //   text: "This is another text.",
+    // },
+    // {
+    //   id: 3,
+    //   title: "Note 3",
+    //   text: "This is text text...",
+    // },
+    // {
+    //   id: 4,
+    //   title: "Note 4",
+    //   text: "Mire se Shkut",
+    // },
+    // {
+    //   id: 5,
+    //   title: "Shqiperia",
+    //   text: "Mire se Shkut",
+    // },
   ]);
+  
+  function handleAddButton(){
+    setShow(current => !current);
+  }
 
-  function handleAdd(event, text, title) {
+  function handleAdd( text, title) {
+    console.log(title, title)
+    if(title.trim().length>0){
     const note = {
       id: Math.random(),
       text: text,
@@ -42,9 +54,16 @@ function App() {
 
     const newNotes = [...notes, note];
     setNotes(newNotes);
+    
+  }
   }
   console.log("notes brenda app", notes);
 
+  function getActiveNote ()  {
+     const newnote = notes.find((note) => note.id === activeNote);
+     console.log(newnote);
+     return newnote;
+  }
   function handleDelete(id) {
     console.log(id);
     const newNotes = notes.filter((note) => note.id !== id);
@@ -53,18 +72,20 @@ function App() {
 
   return (
     <div className="container">
-      <div>
-        <span className="main-note main">
+      <div className="test">
+        {/* <span className="main-note main">
           <h1>Notes</h1>
           <button onClick={(event) => handleAdd(event, text, title)}>
             Add
           </button>
-        </span>
-
-        <List notes={notes} onDelete={handleDelete} />
+        </span> */}
+        <SearchBar handle={setText}/>
+        <List notes={notes.filter((note)=>note.title.toLowerCase().includes(searchTxt.toLowerCase()))} onDelete={handleDelete} setActive={setActive} />
       </div>
-
-      <AddNote handle={handleAdd} />
+        <NoteDetails activeNote={getActiveNote}/>
+        <button onClick={handleAddButton} className="addButton"style={{position:"fixed"}}>+</button>
+        {show && <AddNote handle={handleAdd}/>}
+      {/* <AddNote handle={handleAdd} /> */}
     </div>
   );
 }

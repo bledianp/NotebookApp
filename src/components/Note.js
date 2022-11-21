@@ -1,6 +1,7 @@
 import { useState } from "react";
+import NoteDetails from "./NoteDetails";
 
-const Note = ({ title, text, id, onDelete }) => {
+const Note = ({ title, text, id, onDelete, setActive }) => {
   const [prevPage, setPage] = useState("false");
   console.log(onDelete);
   console.log(id);
@@ -10,12 +11,12 @@ const Note = ({ title, text, id, onDelete }) => {
     return;
   }
   return (
-    <div className="main-note">
+    <div className="main-note" onClick={()=>setActive(id) }>
       <span className="main">
-        <h1>{title}</h1>
+        <h2>{title}</h2>
         <button onClick={() => onDelete(id)}>Delete</button>
       </span>
-      <p>{text}</p>
+      {/* <p>{text}</p> */}
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import App from "../App";
 
-const AddNote = (prop) => {
-  console.log(prop);
+const AddNote = (props) => {
+  console.log(props.handle);
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
 
@@ -18,6 +18,11 @@ const AddNote = (prop) => {
       setTitle(event.target.value);
     }
   }
+
+  function handleSave(){
+     props.handle( text, title);
+     setTitle('');
+  }
   return (
     <div className="addnote">
       <label>Title:</label>
@@ -29,7 +34,7 @@ const AddNote = (prop) => {
       <label>Text:</label>
       <textarea onChange={ChangedText}></textarea>
       <button
-        onClick={(event) => prop.handle(event, text, title)}
+        onClick={handleSave}
         style={{ width: "fit-content" }}
       >
         Save
