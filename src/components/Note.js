@@ -11,7 +11,7 @@ const Note = ({ title, text, id, onDelete, setActive }) => {
     return;
   }
   return (
-    <div className="main-note" onClick={()=>setActive(id) }>
+    <div className="main-note" onClick={() => setActive(id)}>
       <span className="main">
         <h2>{title}</h2>
         <button onClick={() => onDelete(id)}>Delete</button>

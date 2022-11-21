@@ -19,9 +19,9 @@ const AddNote = (props) => {
     }
   }
 
-  function handleSave(){
-     props.handle( text, title);
-     setTitle('');
+  function handleSave() {
+    props.handle(text, title);
+    setTitle("");
   }
   return (
     <div className="addnote">
@@ -33,10 +33,7 @@ const AddNote = (props) => {
       ></input>
       <label>Text:</label>
       <textarea onChange={ChangedText}></textarea>
-      <button
-        onClick={handleSave}
-        style={{ width: "fit-content" }}
-      >
+      <button onClick={handleSave} style={{ width: "fit-content" }}>
         Save
       </button>
     </div>
