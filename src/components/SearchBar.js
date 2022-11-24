@@ -11,12 +11,7 @@ const SearchBar = ({ handle }) => {
         onKeyPress={(event) => {
           event.key === "Enter" && handle(input);
         }}
-        style={{
-          width: "15vw",
-          height: "25px",
-          borderRadius: "1em",
-          margin: "auto",
-        }}
+       className="searchInput"
       />
       <button onClick={() => handle(input)}>Search</button>
     </div>

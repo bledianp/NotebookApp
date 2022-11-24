@@ -1,6 +1,14 @@
 # Notebook App
 
-
+This is a notebook app where you can add new notes, search for them, organize and delete.
+To add new note you have in your right bottom, Add button that when you click it will popup a form where you can add title, category and the text. The category that you enter will be added to the categories on the left side near All Notes. If the category exist earlier it won't be added! 
+We can search for notes or organize them via category. To search with the text you should have the option All available to the Category, otherwise you can't search through the input. 
+To organize them you can choose an option to the dropdown list.
+These notes will be listed left of the side bar where you can see the title and the date when we created it.
+When we click in one of the notes we can see  things like category, title and text that we created the note.
+Also you can delete the notes that you stored through the Delete button that is bottom of the notes.
+When you delete a note, it will delete also the category in the dropdown if there isn't any notes that have this category otherwise it will be listed there!
+ 
 
 ## Available Scripts
 

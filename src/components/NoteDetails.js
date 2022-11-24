@@ -1,6 +1,5 @@
 const NoteDetails = ({ activeNote, onDelete }) => {
-  // console.log(activeNote.title);
-  // console.log(onDelete);
+  
 
   return (
     <div className="noteDetail">
@@ -11,7 +10,7 @@ const NoteDetails = ({ activeNote, onDelete }) => {
       </div>
 
       <div className="buttons">
-        <button onClick={() => onDelete(activeNote.id)} style={{float:"right"}}>Delete</button>
+        <button onClick={() => onDelete(activeNote.id, activeNote.category)} style={{float:"right"}}>Delete</button>
       </div>
     </div>
   );

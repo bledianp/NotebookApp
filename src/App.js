@@ -9,6 +9,7 @@ import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 
 function App() {
+
   const [options, setOptions] = useState(
     localStorage.options ? JSON.parse(localStorage.options) : ["All", "Sport"]
   );
@@ -50,7 +51,6 @@ function App() {
   }
 
   function handleAdd(text, title, category) {
-    // console.log("title", title);
     if (title.trim().length > 0) {
       const note = {
         id: nanoid(),
@@ -62,32 +62,46 @@ function App() {
 
       const newNotes = [...notes, note];
       setNotes(newNotes);
-      const newCategories = [...options, category];
-      setOptions(newCategories);
+
+      const lowOptions = options.map(element=>{
+        return element.toLowerCase();
+      });
+
+      
+      if (!lowOptions.includes(category.trim().toLowerCase()) && category.trim() !== '') {
+        const newCategories = [...options, category];
+        setOptions(newCategories);
+      }
     }
   }
-  // console.log("notes brenda app", notes);
 
   function getActiveNote() {
     const newnote = notes.find((note) => note.id === activeNote);
-    // console.log(newnote);
     return newnote;
   }
-  function handleDelete(id) {
-    // console.log(id);
+  function handleDelete(id, category) {
+
     const newNotes = notes.filter((note) => note.id !== id);
+    
+    if(!newNotes.find((n)=>n.category === category)){
+
+      const newOptions = options.filter((option) => option !== category);
+      setOptions(newOptions);
+      setDefaultOption('All');
+
+    }
+
     setNotes(newNotes);
     setActive("0");
   }
 
   function categorySelected(selectedOption) {
-    // console.log(selectedOption);
     setDefaultOption(selectedOption.value);
   }
 
   return (
-    <div className="container">
-      <div className="test">
+    <div className="container-main">
+      <div className="container">
         <SearchBar handle={setText} />
 
         <div className="second">
@@ -100,6 +114,7 @@ function App() {
             placeholder="Select a category"
           />
         </div>
+
         <List
           notes={
             defaultOption == "All"
@@ -108,17 +123,16 @@ function App() {
                     .toLowerCase()
                     .includes(searchTxt.trim().toLowerCase())
                 )
-              : notes.filter((note) => note.category === defaultOption)
+              : notes.filter((note) => note.category.trim().toLowerCase() === defaultOption.toLowerCase())
           }
-          onDelete={handleDelete}
           setActive={setActive}
         />
       </div>
-      <div style={{ width: "100%" }}>
+      <div >
         {activeNote !== "0" ? (
           <NoteDetails activeNote={getActiveNote()} onDelete={handleDelete} />
         ) : (
-          <h2 style={{ position: "fixed", margin: "30vh 30vw", color: "red" }}>
+          <h2 className="noteSelected">
             No notes selected!
           </h2>
         )}

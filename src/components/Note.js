@@ -1,4 +1,4 @@
-const Note = ({ title, text, id, date, onDelete, setActive }) => {
+const Note = ({ title, text, id, date, setActive }) => {
   return (
     <div className="main-note">
       <div className="main" onClick={() => setActive(id)}>

@@ -1,6 +1,6 @@
 import Note from "./Note";
 
-const List = ({ notes, onDelete, setActive }) => {
+const List = ({ notes,  setActive }) => {
   return (
     <div>
       {notes.map((note) => (
@@ -11,7 +11,6 @@ const List = ({ notes, onDelete, setActive }) => {
           key={note.id}
           id={note.id}
           date={note.date}
-          onDelete={onDelete}
         />
       ))}
     </div>
