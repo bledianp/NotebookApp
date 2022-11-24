@@ -1,9 +1,7 @@
 import { useState } from "react";
 
 const SearchBar = ({ handle }) => {
-  console.log({ handle });
   const [input, setInput] = useState("");
-  console.log(input);
 
   return (
     <div className="search">
@@ -13,9 +11,14 @@ const SearchBar = ({ handle }) => {
         onKeyPress={(event) => {
           event.key === "Enter" && handle(input);
         }}
-        style={{ width: "20vw", height: "25px", borderRadius: "1em" }}
+        style={{
+          width: "15vw",
+          height: "25px",
+          borderRadius: "1em",
+          margin: "auto",
+        }}
       />
-      <button onClick={(event) => handle(input)}>Search</button>
+      <button onClick={() => handle(input)}>Search</button>
     </div>
   );
 };

@@ -1,22 +1,10 @@
-import { useState } from "react";
-import NoteDetails from "./NoteDetails";
-
-const Note = ({ title, text, id, onDelete, setActive }) => {
-  const [prevPage, setPage] = useState("false");
-  console.log(onDelete);
-  console.log(id);
-
-  function enterPage(event) {
-    setPage(!prevPage);
-    return;
-  }
+const Note = ({ title, text, id, date, onDelete, setActive }) => {
   return (
-    <div className="main-note" onClick={() => setActive(id)}>
-      <span className="main">
-        <h2>{title}</h2>
-        <button onClick={() => onDelete(id)}>Delete</button>
-      </span>
-      {/* <p>{text}</p> */}
+    <div className="main-note">
+      <div className="main" onClick={() => setActive(id)}>
+        <h2>{title} </h2>
+        <p>{date}</p>
+      </div>
     </div>
   );
 };

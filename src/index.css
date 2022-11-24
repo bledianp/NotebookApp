@@ -13,7 +13,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.main-note:hover{
+.main-note:hover {
   background-color: blue;
   cursor: pointer;
 }
@@ -24,22 +24,20 @@ code {
   background-color: rgb(94, 94, 222);
   align-items: center;
   justify-content: space-between;
-
+  height: auto;
 }
 .addnote {
-  /* width: 50%; */
-  /* margin: auto; */
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 20px;
   background-color: rgb(173, 67, 159);
   border-radius: 10px;
   position: fixed;
-  
-  right: 50px;
-  bottom: 10px;
-  height: fit-content;
-  
+
+  right: 70px;
+  bottom: 20px;
+  height: 30%;
+  width: 20%;
 }
 
 .main {
@@ -47,35 +45,40 @@ code {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
 }
 .main h2 {
   overflow: hidden;
 }
-h1{
+h1 {
   color: blue;
 }
 
 p {
-  padding: 10px;
+  /* padding: 10px; */
   text-align: left;
 }
 
 .container {
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: row;
 }
 
-.test{
+.test {
   width: 30%;
+  display: flex;
+  flex-direction: column;
 }
 
-.search{
+.search {
   padding: 10px;
 }
+button:hover {
+  background-color: #07c020;
+}
 
-button{
+button {
   height: 200px;
   border-radius: 10px;
   margin: 10px;
@@ -84,9 +87,39 @@ button{
   cursor: pointer;
 }
 
-.addButton{
+.addButton {
   position: fixed;
   right: 10px;
   bottom: 10px;
-  border: 3px solid #8AC007;
+  border: 3px solid #8ac007;
+}
+
+.noteDetail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: purple;
+
+  position: fixed;
+  margin: 20vh 10vw;
+
+  width: 50%;
+  height: 50%;
+  overflow-wrap: break-word;
+  overflow-y: auto;
+  border-radius: 10px;
+  white-space: pre-wrap;
+}
+
+.dropdown {
+  width: 25%;
+  float: right;
+}
+
+.second {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
